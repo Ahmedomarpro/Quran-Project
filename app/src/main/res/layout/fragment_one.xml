@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tab.oneFragment">
+    tools:context=".tab.oneFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:background="@drawable/mainbackground">
 
+    <ImageView
+        android:id="@+id/header_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/unnamed"
+        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.3" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_one"
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_image" />
+
+    <me.relex.circleindicator.CircleIndicator2
+        android:id="@+id/indicator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:layout_height="50dp"
+          app:ci_margin="10dp"
+        app:ci_orientation="horizontal"
+        app:ci_gravity="center"
+        app:ci_drawable_unselected="@drawable/white_radius"
+        app:ci_drawable="@drawable/white_radius"
+        app:ci_animator="@anim/scale_with_alpha"
+        app:layout_constraintBottom_toBottomOf="@id/top_guide_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guide_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
